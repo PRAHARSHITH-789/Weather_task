@@ -1,0 +1,8 @@
+.card-hover-effect {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  background-color:azure;
+  cursor: pointer;
+  width:40%;
+  border-radius: 50%;
+}

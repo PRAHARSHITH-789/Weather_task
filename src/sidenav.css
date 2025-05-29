@@ -1,0 +1,25 @@
+.list li.active {
+  background-color: #4b0082; 
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 0 10px rgba(75, 0, 130, 0.7);
+  transition: background-color 0.3s ease;
+}
+
+.list li:hover:not(.active) {
+  background-color: #6a5acd; 
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.sidenav {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 20%;
+  background-color: #191970;
+  overflow-y: auto;
+  padding: 20px 10px;
+  color: white;
+  min-width: 220px;
+}
