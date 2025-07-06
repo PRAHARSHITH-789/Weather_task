@@ -1,15 +1,15 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
-import Main from "./main"
-import Sidenav from "./sidenav";
-import Header from "./header";
-import HumanBody from "./Humanbody";
-import MyCalendar from "./calendra";
-import Dashboard from  "./Dashboard";
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Login_in from "./login_sign_in ";
+import { createRoot } from "react-dom/client"; 
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import "bootstrap-icons/font/bootstrap-icons.css";
+import Main from "./main";
+const container = document.getElementById("root");
+const root = createRoot(container);
 
-<Main
-/>
+root.render(
+  <GoogleOAuthProvider clientId="226138521359-vpqdus6s9l2olchei927oeb4onn5nel7.apps.googleusercontent.com">
+      <Main/>
+    </GoogleOAuthProvider>
 );
