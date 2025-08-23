@@ -42,7 +42,7 @@ export default function PayAndPostJob() {
     await connection.confirmTransaction(txid);
 
     // Send to backend for verification
-    fetch("http://localhost:8080/verify-payment", {
+    fetch("https://rizeos-backend-pwmw.onrender.com/verify-payment", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ txid, from: walletAddress, to: recipient })

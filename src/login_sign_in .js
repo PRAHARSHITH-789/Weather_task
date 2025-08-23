@@ -14,7 +14,7 @@ function Login_in() {
   const getin = async () => {
     try {
       console.log("Form Submitted:", form);
-      const response = await axios.post("http://localhost:8080/login", {
+      const response = await axios.post("https://rizeos-backend-pwmw.onrender.com/login", {
         email: form.email,
         password: form.password,
       });
@@ -78,7 +78,7 @@ function Login_in() {
             form.email=user.email;
 
           try{
-const response = await axios.post("http://localhost:8080/login", {
+const response = await axios.post("https://rizeos-backend-pwmw.onrender.com/login", {
         email: form.email,
         
       });
@@ -128,7 +128,7 @@ function Sign_in() {
   try {
     console.log("Form Submitted:", form);
 
-    const response = await axios.post("http://localhost:8080/sign_in", {
+    const response = await axios.post("https://rizeos-backend-pwmw.onrender.com/sign_in", {
       email: form.email,
       password: form.password,
     });

@@ -4,8 +4,8 @@ import Navbar from './navbar.js';
 
 export default function Jobs() {
 
-  const url=process.env.REACT_APP_API_URL;
-  const [jobs, setJobs] = useState([]);
+  const url='https://rizeos-backend-pwmw.onrender.com';
+    const [jobs, setJobs] = useState([]);
   const [appliedIds, setAppliedIds] = useState(new Set());
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

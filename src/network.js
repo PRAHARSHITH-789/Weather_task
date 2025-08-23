@@ -4,7 +4,7 @@ import Navbar from './navbar';
 
 export default function Network() {
   const [data, setData] = useState([]);
- const url=process.env.REACT_APP_API_URL;
+ const url='https://rizeos-backend-pwmw.onrender.com';
   const share = () => {
     window.location.href = "/Your_Network/share_thought";
   };

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 export default function Share_thought_form() {
-   const url=process.env.REACT_APP_API_URL;
+   const url="https://rizeos-backend-pwmw.onrender.com";
   const [form, setForm] = useState({
     name: '',
     position: '',

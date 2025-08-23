@@ -3,7 +3,7 @@ import axios from "axios";
 import PayAndPostJob from "./phanton"; // Your Phantom wallet component
 
 export default function Profile() {
-   const url=process.env.REACT_APP_API_URL;
+   const url='https://rizeos-backend-pwmw.onrender.com';
   const [role, setRole] = useState("jobseeker");
   const [form, setForm] = useState({
     name: "",
@@ -183,7 +183,7 @@ export default function Profile() {
                   <p><strong>Salary:</strong> {seeker.salary}</p>
                   <p><strong>Description:</strong> {seeker.description}</p>
                   {seeker.filePath && (
-                    <a href={`http://localhost:8080/${seeker.filePath}`} target="_blank" rel="noopener noreferrer">View Resume</a>
+                    <a href={`https://rizeos-backend-pwmw.onrender.com/${seeker.filePath}`} target="_blank" rel="noopener noreferrer">View Resume</a>
                   )}
                 </div>
               ))}
