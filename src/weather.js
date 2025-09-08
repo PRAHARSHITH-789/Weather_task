@@ -151,8 +151,16 @@ function App() {
   };
 
   return (
-    <div>
-      {/* Search Bar */}
+<div
+  style={{
+    backgroundImage: `url("/bg.jpg")`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    height: "150vh",   // full screen height
+    width: "150vw",    // full screen width
+  }}
+> {/* Search Bar */}
       <div className="searchBar">
         <div className="searchBarParentDiv">
           <input
