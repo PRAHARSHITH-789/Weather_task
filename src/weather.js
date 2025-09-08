@@ -41,12 +41,9 @@ function App() {
       const res = await fetch(
         `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`
       );
+      if (!res.ok) return;
       const data = await res.json();
-
-      if (!data?.list?.[0]?.components) {
-        console.warn("AQI data unavailable");
-        return;
-      }
+      if (!data?.list?.[0]?.components) return;
 
       const list = data.list[0].components;
       setAqi({
@@ -65,6 +62,8 @@ function App() {
       const res = await fetch(
         `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
       );
+      if (!res.ok) return;
+
       const data = await res.json();
       if (!data?.list) return;
 
@@ -73,13 +72,15 @@ function App() {
         let date = item.dt_txt.split(" ")[0];
         if (!daily[date] && item.main?.temp) {
           daily[date] = {
-            temp: item.main?.temp?.toFixed(1) ?? "-",
+            temp: item.main.temp.toFixed(1),
             day: new Date(date).toLocaleDateString("en-US", {
               weekday: "long",
             }),
           };
         }
       });
+
+      if (Object.keys(daily).length === 0) return;
       setForecast(Object.entries(daily).slice(0, 5));
     } catch (err) {
       console.error("Forecast fetch error:", err);
@@ -91,6 +92,8 @@ function App() {
       const res = await fetch(
         `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
       );
+      if (!res.ok) return;
+
       const data = await res.json();
       if (!data?.list) return;
 
@@ -98,6 +101,8 @@ function App() {
       let todayForecasts = data.list.filter(
         (item) => item.dt_txt.startsWith(todayDate) && item.main?.temp
       );
+
+      if (todayForecasts.length === 0) return;
       setTodayTemps(todayForecasts.slice(0, 6));
     } catch (err) {
       console.error("Today temps fetch error:", err);
@@ -110,18 +115,22 @@ function App() {
       resetAll();
       return;
     }
-    try {
-      // Default to India if no country code is provided
-      const query = city.includes(",") ? city : `${city},in`;
 
+    try {
+      const query = city.includes(",") ? city : `${city},in`;
       const res = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${API_KEY}&units=metric`
       );
-      const data = await res.json();
-      console.log(data);
 
-      if (data.cod !== 200 || !data.coord) {
-        alert("Please enter a valid input");
+      if (!res.ok) {
+        alert("City not found. Please enter a valid city name.");
+        resetAll();
+        return;
+      }
+
+      const data = await res.json();
+      if (!data?.coord || !data?.main?.temp || !data?.name) {
+        alert("Incomplete data. Please try another city.");
         resetAll();
         return;
       }
@@ -136,7 +145,7 @@ function App() {
       }
     } catch (err) {
       console.error("Weather fetch error:", err);
-      alert("Please enter a valid input");
+      alert("Something went wrong. Please enter a valid input.");
       resetAll();
     }
   };

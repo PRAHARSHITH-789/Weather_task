@@ -72,7 +72,7 @@ body {
   padding: 15px;
 }
 
-/* Responsive: stack on small screens */
+/* Responsive */
 @media (max-width: 767px) {
   .mainContentParentDiv {
     flex-direction: column;
